@@ -1,0 +1,21 @@
+[
+	{
+		"routeId": "batteryRoute",
+		"datasource": "BatteryStatus1",
+		"transformers": ["batteryPercentageExtractor"],
+		"datasinks": ["BatteryStatusBatteryPercentage"],
+		"trigger": "event"
+	},
+	{
+		"datasource": "BatteryStatus2",
+		"transformers": ["batteryTimestampExtractor"],
+		"datasinks": ["BatteryStatusBatteryTimestmap"],
+		"trigger": "event"
+	},
+	{
+		"datasource": "BatteryStatus3",
+		"transformers": ["batteryIsChargingExtractor"],
+		"datasinks": ["BatteryStatusBatteryIsCharging"],
+		"trigger": "event"
+	}
+]

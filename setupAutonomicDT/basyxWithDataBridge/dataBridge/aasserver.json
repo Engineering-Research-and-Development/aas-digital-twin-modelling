@@ -1,0 +1,20 @@
+[
+	{
+		"uniqueId": "BatteryStatusBatteryPercentage",
+		"submodelEndpoint": "http://host.docker.internal:8081/submodels/aHR0cHM6Ly9leGFtcGxlLmNvbS9pZHMvc20vNzQ2NF8xMTgxXzMwNTJfNTYzNg==",
+		"idShortPath": "BatteryStatus.BatteryPercentage",
+		"api": "DotAAS-V3"
+	},
+	{
+		"uniqueId": "BatteryStatusBatteryTimestmap",
+		"submodelEndpoint": "http://host.docker.internal:8081/submodels/aHR0cHM6Ly9leGFtcGxlLmNvbS9pZHMvc20vNzQ2NF8xMTgxXzMwNTJfNTYzNg==",
+		"idShortPath": "BatteryStatus.Timestamp",
+		"api": "DotAAS-V3"
+	},
+	{
+		"uniqueId": "BatteryStatusBatteryIsCharging",
+		"submodelEndpoint": "http://host.docker.internal:8081/submodels/aHR0cHM6Ly9leGFtcGxlLmNvbS9pZHMvc20vNzQ2NF8xMTgxXzMwNTJfNTYzNg==",
+		"idShortPath": "BatteryStatus.IsCharging",
+		"api": "DotAAS-V3"
+	}
+]

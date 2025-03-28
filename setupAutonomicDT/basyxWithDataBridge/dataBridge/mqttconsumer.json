@@ -1,0 +1,20 @@
+[
+	{
+		"uniqueId": "BatteryStatus1",
+		"serverUrl": "host.docker.internal",
+		"serverPort": 1883,
+		"topic": "computerMouse/batteryPercentage"
+	},
+	{
+		"uniqueId": "BatteryStatus2",
+		"serverUrl": "host.docker.internal",
+		"serverPort": 1883,
+		"topic": "computerMouse/batteryTimestamp"
+	},
+	{
+		"uniqueId": "BatteryStatus3",
+		"serverUrl": "host.docker.internal",
+		"serverPort": 1883,
+		"topic": "computerMouse/batteryIsCharging"
+	}
+]

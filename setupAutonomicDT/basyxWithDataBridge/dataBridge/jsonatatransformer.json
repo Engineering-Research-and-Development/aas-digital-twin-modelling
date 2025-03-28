@@ -1,0 +1,20 @@
+[
+	{
+		"uniqueId": "batteryPercentageExtractor",
+		"queryPath": "batteryPercentageExtractor.jsonata",
+		"inputType": "JsonString",
+		"outputType": "JsonString"
+	},
+	{
+		"uniqueId": "batteryTimestampExtractor",
+		"queryPath": "batteryTimestampExtractor.jsonata",
+		"inputType": "JsonString",
+		"outputType": "JsonString"
+	},
+	{
+		"uniqueId": "batteryIsChargingExtractor",
+		"queryPath": "batteryIsChargingExtractor.jsonata",
+		"inputType": "JsonString",
+		"outputType": "JsonString"
+	}
+]
