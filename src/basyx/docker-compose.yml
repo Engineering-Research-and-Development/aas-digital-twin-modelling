@@ -15,12 +15,11 @@ services:
         condition: service_healthy
       sm-registry:
         condition: service_healthy
-      mongo:
-        condition: service_healthy
       mosquitto:
         condition: service_healthy
+        
   aas-registry:
-    image: eclipsebasyx/aas-registry-log-mongodb:2.0.0-SNAPSHOT
+    image: eclipsebasyx/aas-registry-log-mem:2.0.0-SNAPSHOT
     container_name: aas-registry
     ports:
       - '8082:8080'
@@ -29,11 +28,9 @@ services:
     volumes:
       - ./basyx/aas-registry.yml:/workspace/config/application.yml
     restart: always
-    depends_on:
-      mongo:
-        condition: service_healthy
+    
   sm-registry:
-    image: eclipsebasyx/submodel-registry-log-mongodb:2.0.0-SNAPSHOT
+    image: eclipsebasyx/submodel-registry-log-mem:2.0.0-SNAPSHOT
     container_name: sm-registry
     ports:
       - '8083:8080'
@@ -42,9 +39,7 @@ services:
     volumes:
       - ./basyx/sm-registry.yml:/workspace/config/application.yml
     restart: always
-    depends_on:
-      mongo:
-        condition: service_healthy
+    
   aas-discovery:
     image: eclipsebasyx/aas-discovery:2.0.0-SNAPSHOT
     container_name: aas-discovery
@@ -55,21 +50,7 @@ services:
     ports:
       - '8084:8081'
     restart: always
-    depends_on:
-      mongo:
-        condition: service_healthy
-  mongo:
-    image: mongo:5.0.10
-    container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: mongoAdmin
-      MONGO_INITDB_ROOT_PASSWORD: mongoPassword
-    restart: always
-    healthcheck:
-      test: mongo
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    
   mosquitto:
     image: eclipse-mosquitto:2.0.15
     container_name: mosquitto
@@ -86,6 +67,7 @@ services:
       timeout: 10s
       start_period: 1s
       retries: 3
+      
   aas-web-ui:
     image: eclipsebasyx/aas-gui:SNAPSHOT
     container_name: aas-ui
@@ -103,6 +85,7 @@ services:
     depends_on:
       aas-env:
         condition: service_healthy
+        
   dashboard-api:
     image: aaronzi/basyx-dashboard-api:SNAPSHOT_02
     container_name: dashboard-api
@@ -114,11 +97,16 @@ services:
     depends_on:
       mongo:
         condition: service_healthy
-  databridge:
-    image: eclipsebasyx/databridge:1.0.0-milestone-08
-    container_name: databridge
-    volumes:
-      - ./databridge:/usr/share/config
-    depends_on:
-      mosquitto:
-        condition: service_healthy
+        
+  mongo:
+    image: mongo:5.0.10
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoAdmin
+      MONGO_INITDB_ROOT_PASSWORD: mongoPassword
+    restart: always
+    healthcheck:
+      test: mongo
+      interval: 10s
+      timeout: 5s
+      retries: 5
