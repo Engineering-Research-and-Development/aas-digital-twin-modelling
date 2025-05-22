@@ -5,18 +5,18 @@ services:
     command: bin/pulsar standalone
     ports:
       - "6650:6650"
-      - "9553:8080"
+      - "9553:9553"
     volumes:
+      - ./pulsarconf/standalone.conf:/pulsar/conf/standalone.conf:ro
       - pulsardata:/pulsar/data
-      - pulsarconf:/pulsar/conf
     networks:
       - pulsar-net
       
   dekaf:
-    image: tealtools/dekaf:latest
+    image: tealtools/dekaf:0.2.0
     container_name: dekaf
     environment:
-      DEKAF_PULSAR_WEB_URL: "http://pulsar:8080"
+      DEKAF_PULSAR_WEB_URL: "http://pulsar:9553"
       DEKAF_PULSAR_BROKER_URL: "pulsar://pulsar:6650"
       # DEKAF_LICENSE_ID: ""
       # DEKAF_LICENSE_TOKEN: ""
@@ -29,7 +29,7 @@ services:
     restart: always
       
   mosquitto:
-    image: eclipse-mosquitto
+    image: eclipse-mosquitto:2.0.21
     container_name: mosquitto
     hostname: mosquitto
     ports:
@@ -44,7 +44,7 @@ services:
 
 volumes:
   pulsardata:
-  pulsarconf:
+  #pulsarconf:
   dekaf-library:
 
 networks:
