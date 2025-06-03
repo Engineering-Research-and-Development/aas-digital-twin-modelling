@@ -77,6 +77,18 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: mongoAdmin
+      ME_CONFIG_BASICAUTH_PASSWORD: mongoPassword
+      ME_CONFIG_MONGODB_URL: mongodb://mongoAdmin:mongoPassword@mongo:27017
+    ports:
+      - 8090:8081
+
   mosquitto:
     image: eclipse-mosquitto:2.0.15
     container_name: mosquitto
